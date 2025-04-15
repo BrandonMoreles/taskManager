@@ -2,8 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import userRoutes from "./routes/userRouter.js"
-import taskRoutes from "./routes/taskRouter.js"
+import userRoutes from "./src/routes/userRouter.js"
+import taskRoutes from "./src/routes/taskRouter.js"
 import cookieParser from "cookie-parser";
 dotenv.config();
 
