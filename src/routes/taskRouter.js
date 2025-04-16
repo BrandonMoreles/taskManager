@@ -9,7 +9,7 @@ router.post("/", authenticate, async(req, res)=>{
         const newTask= new Task({
             title,
             description,
-            user:req.userId
+            user:req.user.id
         })
         await newTask.save()
         res.status(201).json(newTask);
