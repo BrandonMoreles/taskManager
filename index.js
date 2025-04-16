@@ -13,7 +13,7 @@ app.use(cookieParser());
 // Middleware
 app.use(cors({
   credentials: true,
-  origin: "http://192.168.31.115:5173"
+  origin: true
   }
 ));
 
