@@ -26,9 +26,9 @@ router.post("/register", async(req, res)=>{
         //Despues se devuelve en la respuesta
         //201 indica que la solucitud fue exisotsa y se creo un nuevo recurso
         res.status(200).cookie("token", token,{
-            httpOnly:true,
+            httpOnly:false,
             secure:false,
-            sameSite:"none",
+            sameSite:"Lax",
             maxAge:7*24*60*60*1000
         })
     }
@@ -64,9 +64,9 @@ router.post("/login", async (req, res) => {
 
         // Establecemos la cookie con el token
         res.status(200).cookie("token", token, {
-            httpOnly: true,
+            httpOnly: false,
             secure: false,
-            sameSite: "none",
+            sameSite: "Lax",
             maxAge: 7 * 24 * 60 * 60 * 1000 // Corregido el valor de maxAge
         });
 
