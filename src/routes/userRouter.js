@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 import User from "../models/User.js";
 import authenticate from "../middleware/authenticate.js";
+const isProduction = process.env.NODE_ENV === "production";
 
 
 //se le asigna a una constante para mejor control
@@ -26,8 +27,8 @@ router.post("/register", async(req, res)=>{
         //201 indica que la solucitud fue exisotsa y se creo un nuevo recurso
         res.status(200).cookie("token", token,{
             httpOnly:true,
-            secure:true,
-            sameSite:"none",
+            secure:false,
+            sameSite:"Lax",
             maxAge:7*24*60*60*1000
         })
     }
