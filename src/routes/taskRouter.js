@@ -20,7 +20,7 @@ router.post("/", authenticate, async(req, res)=>{
 
 router.get("/", authenticate, async(req,res)=>{
     try{
-        const tasks=await Task.find({user:req.userId});
+        const tasks=await Task.find({user:req.user.id});
         res.json(tasks);
     }
     catch(error){
@@ -31,7 +31,7 @@ router.get("/", authenticate, async(req,res)=>{
 router.put("/:id", authenticate, async(req, res)=>{
     try{
         const updateTask= await Task.findByIdAndUpdate({
-            _id:req.params.id, user:req.userId
+            _id:req.params.id, user:req.user.id
         },req.body,
     {new:true}
     )
@@ -44,7 +44,7 @@ router.put("/:id", authenticate, async(req, res)=>{
 
 router.delete("/:id", authenticate, async (req, res) => {
     try {
-      const deletedTask = await Task.findOneAndDelete({ _id: req.params.id, user: req.userId });
+      const deletedTask = await Task.findOneAndDelete({ _id: req.params.id, user: req.user.id });
   
       if (!deletedTask) return res.status(404).json({ message: "Tarea no encontrada o no autorizada" });
   
