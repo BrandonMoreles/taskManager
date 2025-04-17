@@ -54,4 +54,21 @@ router.delete("/:id", authenticate, async (req, res) => {
     }
   });
   
+  router.get("/completed", authenticate, async(req, res)=>{
+    try{
+        const tasksCompleted= await Task.find({completed:true})
+        res.json(tasksCompleted)
+    }catch(error){
+        console.error(error)
+    }
+  })
+
+  router.get("/uncompleted", authenticate,async(req, res)=>{
+    try{
+        const tasksUncompleted=await Task.find({completed:false})
+        res.json(tasksUncompleted)
+    }catch(error){
+        console.error(error)
+    }
+  })
   export default router;
